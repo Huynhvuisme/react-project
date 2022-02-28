@@ -31,7 +31,7 @@ function Slide (){
             <Swiper
                 spaceBetween={20}
                 slidesPerView={5}
-                navigation
+                navigation={{ clickable: true }}
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
             >
