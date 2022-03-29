@@ -37,4 +37,4 @@ function Detail(array) {
     )
 }
 
-export default Detail
+export default Detail;

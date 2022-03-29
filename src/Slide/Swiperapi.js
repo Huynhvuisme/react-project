@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Detail from "./Detail";
 import 'swiper/css';
-function Slide (){
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+function Slide (movieName){
     const [animes, setAnimes] = useState([]);
     const [arr, setArr] = useState([]);
     const show= true;
@@ -17,18 +21,20 @@ function Slide (){
         list['description'] = description;
         list['show'] = show;
         setArr(list);
-
+            console.log(12312312312313)
     };
     useEffect(() => {
-        fetch('https://api.jikan.moe/v4/anime?q=one%20&sfw')
+        fetch('https://api.jikan.moe/v4/anime?q='+ movieName.movieName)
             .then(res => res.json())
             .then(anime => {
                 setAnimes(anime.data)
             })
     }, [])
     return (
-        <div>
+        <div className="list">
+            <h2 className="title">{movieName.movieName}</h2>
             <Swiper
+                modules={[Navigation, Pagination, Scrollbar, A11y]}
                 spaceBetween={20}
                 slidesPerView={5}
                 navigation={{ clickable: true }}
